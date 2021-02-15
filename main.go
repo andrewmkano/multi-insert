@@ -13,7 +13,7 @@ import (
 
 var (
 	DB              *sql.DB
-	recordsToInsert = int(100000)
+	recordsToInsert = int(10000)
 )
 
 func setupDB() error {
