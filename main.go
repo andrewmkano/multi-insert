@@ -13,7 +13,7 @@ import (
 
 var (
 	DB              *sql.DB
-	recordsToInsert = int(100)
+	recordsToInsert = int(100000)
 )
 
 func setupDB() error {
@@ -46,5 +46,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(fmt.Sprintf("Inserting %d took %s", recordsToInsert, time.Since(n)))
+	fmt.Printf("Inserting %d took %s", recordsToInsert, time.Since(n))
 }
