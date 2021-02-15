@@ -13,7 +13,7 @@ import (
 
 var (
 	DB              *sql.DB
-	recordsToInsert = int(10000)
+	recordsToInsert = int(20000)
 )
 
 func setupDB() error {
@@ -32,6 +32,9 @@ func setupDB() error {
 	return nil
 }
 
+// First approach - Inserting 100 took 4.98245ms
+// First approach - Inserting 10000 took 234.610741ms
+// First approach - fails > PostgreSQL only supports 65535 parameters
 func main() {
 	if err := setupDB(); err != nil {
 		log.Fatal(err)
@@ -46,5 +49,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Inserting %d took %s", recordsToInsert, time.Since(n))
+	fmt.Printf("Inserting %d took %s\n", recordsToInsert, time.Since(n))
 }
